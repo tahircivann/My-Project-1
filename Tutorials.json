@@ -1,0 +1,147 @@
+{
+    "id": 1019,
+    "name": "Mockup tutorial for Tahir",
+    "description": "Lorem ipsum sit dolor amet.",
+    "lastTimeUpdated": "2021-09-30T10:31:37.000+00:00",
+    "workplace": "",
+    "machineId": 13,
+    "stationId": 42,
+    "steps": [
+        {
+            "id": 1731,
+            "name": "Do something with Robot arm",
+            "description": "Highlight robot arm",
+            "order": 1,
+            "tutorialId": 403,
+            "actions": [
+                {
+                    "id": 1172,
+                    "structureName": "Scene9993",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "Scene9993_1",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "Scene9996",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "Scene9996_1",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+
+                {
+                    "id": 1172,
+                    "structureName": "Scene9997_1",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "Scene9999_1",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                }
+            ],
+            "cameraOffset": "-0,15,45",
+            "isPhoto": true,
+            "images": [],
+            "justCreated": false,
+            "tempVideoPath": ""
+        },
+        {
+            "id": 1732,
+            "name": "Photo step",
+            "description": "You do not need to show anything here!",
+            "order": 1,
+            "tutorialId": 403,
+            "actions": [],
+            "cameraOffset": "",
+            "isPhoto": true,
+            "images": [
+                {
+                    "id": 130,
+                    "type": "IMAGE",
+                    "subtype": "",
+                    "fileName": "1732_1607606224494.jpg",
+                    "comment": "",
+                    "url": "api/attachment/download/step/1732/image/1732_1607606224494.jpg",
+                    "fileAddress": "",
+                    "overlayAddress": ""
+                }
+            ],
+            "justCreated": false,
+            "tempVideoPath": ""
+        },
+        {
+            "id": 1733,
+            "name": "Do something with Robot arm",
+            "description": "Highlight robot arm",
+            "order": 1,
+            "tutorialId": 403,
+            "actions": [
+                {
+                    "id": 1172,
+                    "structureName": "BRep_1738",
+                    "structureId": 1233,
+                    "actionType": "HIGHLIGHT",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "BRep_2008",
+                    "structureId": 1233,
+                    "actionType": "HIDE",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "BRep_1955",
+                    "structureId": 1233,
+                    "actionType": "HIDE",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                }
+            ],
+            "cameraOffset": "{\"xRot\":312.5417175292969,\"yRot\":326.39227294921877,\"objX\":0.17543259263038636,\"objY\":0.15847910940647126,\"objZ\":0.000005993842933094129,\"rootX\":-0.031905487179756168,\"rootY\":-0.205595463514328,\"rootZ\":-0.10193391144275665,\"camX\":-0.5691249966621399,\"camY\":-0.3373374938964844,\"camZ\":-3.0789334774017336,\"isSet\":true}",
+            "isPhoto": true,
+            "images": [],
+            "justCreated": false,
+            "tempVideoPath": ""
+        }
+    ],
+    "station": "Testing F1",
+    "machine": "F1"
+}
