@@ -2,9 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./src/styles.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Three.js TpypeScript Test by Tahir Civan</title>
+</head>
+
+<body>
   <div id="debug">
     <div>Triangles:<span id="Triangles"></span></div>
   </div>
@@ -14,47 +18,9 @@
   <div id="ObjectName">
     <div>ObjectName:<span id="ObjectName"></span></div>
   </div>
-  <style>
-    body {
-      overflow: hidden;
-      margin: 0px;
-    }
-
-    #debug {
-      position: absolute;
-      left: 0em;
-      top: 4em;
-      padding: 1em;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      font-family: monospace;
-    }
-
-    #ObjectName {
-      position: absolute;
-      left: 0em;
-      top: 10em;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      font-family: monospace;
-    }
-
-    #LODdebug {
-      position: absolute;
-      left: 0em;
-      top: 7em;
-      padding: 1em;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      font-family: monospace;
-    }
-  </style>
-</head>
-
-<body>
-  <script type="module" src="bundle.js"></script>
-  <script src="../dist/tween.umd.js"></script>
-  <script src="js/RequestAnimationFrame.js"></script>
+    <script type="module" src="bundle.js"></script>
+    <script src="js/tween.umd.js"></script>
+    <script src="js/RequestAnimationFrame.js"></script>
 
 </body>
 
