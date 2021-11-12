@@ -9,7 +9,7 @@
     "steps": [
         {
             "id": 1731,
-            "name": "Do something with Robot arm",
+            "name": "Do something with Robot arm1",
             "description": "Highlight robot arm",
             "order": 1,
             "tutorialId": 403,
@@ -50,7 +50,6 @@
                     "stepId": 1731,
                     "state": 0
                 },
-
                 {
                     "id": 1172,
                     "structureName": "Scene9997_1",
@@ -83,7 +82,7 @@
             "order": 1,
             "tutorialId": 403,
             "actions": [],
-            "cameraOffset": "",
+            "cameraOffset": "1,1,1",
             "isPhoto": true,
             "images": [
                 {
@@ -102,14 +101,14 @@
         },
         {
             "id": 1733,
-            "name": "Do something with Robot arm",
+            "name": "Do something with Robot arm2",
             "description": "Highlight robot arm",
             "order": 1,
             "tutorialId": 403,
             "actions": [
                 {
                     "id": 1172,
-                    "structureName": "BRep_1738",
+                    "structureName": "BRep_1738_LOD0",
                     "structureId": 1233,
                     "actionType": "HIGHLIGHT",
                     "color": "1,0,0,1",
@@ -118,7 +117,7 @@
                 },
                 {
                     "id": 1172,
-                    "structureName": "BRep_2008",
+                    "structureName": "BRep_1738_LOD2",
                     "structureId": 1233,
                     "actionType": "HIDE",
                     "color": "1,0,0,1",
@@ -127,7 +126,7 @@
                 },
                 {
                     "id": 1172,
-                    "structureName": "BRep_1955",
+                    "structureName": "BRep_2008_LOD0",
                     "structureId": 1233,
                     "actionType": "HIDE",
                     "color": "1,0,0,1",
@@ -135,7 +134,7 @@
                     "state": 0
                 }
             ],
-            "cameraOffset": "{\"xRot\":312.5417175292969,\"yRot\":326.39227294921877,\"objX\":0.17543259263038636,\"objY\":0.15847910940647126,\"objZ\":0.000005993842933094129,\"rootX\":-0.031905487179756168,\"rootY\":-0.205595463514328,\"rootZ\":-0.10193391144275665,\"camX\":-0.5691249966621399,\"camY\":-0.3373374938964844,\"camZ\":-3.0789334774017336,\"isSet\":true}",
+            "cameraOffset": "0,-5,-35",
             "isPhoto": true,
             "images": [],
             "justCreated": false,
