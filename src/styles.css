@@ -37,3 +37,21 @@ button {
     font-family: monospace;
   }
 
+  #ObjectName {
+    position: absolute;
+    left: 0em;
+    top: 10em;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: monospace;
+  }
+
+  #LODdebug {
+    position: absolute;
+    left: 0em;
+    top: 7em;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: monospace;
+  }
