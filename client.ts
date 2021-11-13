@@ -359,8 +359,8 @@ function render() {
 
     // console.log( renderer.info.render.triangles );
     renderer.info.autoReset = true;
-    trianglesElem!.innerHTML = renderer.info.render.triangles.toString()
-    LODElem!.innerHTML = lod.getCurrentLevel().toString()
+   // trianglesElem!.innerHTML = renderer.info.render.triangles.toString()
+  //  LODElem!.innerHTML = lod.getCurrentLevel().toString()
     renderer.render(scene, camera)
 }
 
