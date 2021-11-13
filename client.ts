@@ -351,8 +351,8 @@ function animate() {
     stats.update()
 }
 
-const trianglesElem = document.querySelector("#Triangles")
-const LODElem = document.querySelector("#LOD")
+//const trianglesElem = document.querySelector("#Triangles")
+//const LODElem = document.querySelector("#LOD")
 
 
 function render() {
