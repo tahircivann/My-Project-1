@@ -4,8 +4,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Stats from 'three/examples/jsm/libs/stats.module'
 import { GUI } from "three/examples/jsm/libs/dat.gui.module"
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min'
-import { update } from '@tweenjs/tween.js'
-
 
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xa0a0a0);
@@ -22,27 +20,25 @@ helper.material = new THREE.MeshLambertMaterial({
     color: 0xffffff,
     transparent: true,
     opacity: 0.25,
-
 });
 helper.position.y = - 10;
 scene.add(helper)
 var jsonName = Object;
 var jsonAction = new Array;
-var jsonCameraOfset = "";
+var jsonCameraOffset = "";
+var jsonCameraRotation = "";
 var value = -1;
-
-
 
 const ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
 scene.add(ambientLight);
 
-const camera = new THREE.PerspectiveCamera(
+var camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 )
-camera.position.set(45, 45, 45)
+camera.position.set(45, 45, 50.55)
 const renderer = new THREE.WebGLRenderer({
     antialias: true
 })
@@ -56,11 +52,11 @@ document.body.appendChild(renderer.domElement)
 const controls = new OrbitControls(camera, renderer.domElement)
 const pickableObjects: THREE.Mesh[] = []
 const LOD2level: THREE.Mesh[] = []
+controls.screenSpacePanning = true
 
 //Raycasting
 let intersectedObjects: THREE.Object3D | null
-const originalMaterials: { [id: string]: THREE.Material | THREE.Material[] } =
-    {}
+const originalMaterials: { [id: string]: THREE.Material | THREE.Material[] } = {}
 const highlightedMaterial = new THREE.MeshBasicMaterial({
     //wireframe: true,
     color: 0x00ff00,
@@ -72,10 +68,10 @@ const lod = new THREE.LOD();
 const raycaster = new THREE.Raycaster()
 let intersects: THREE.Intersection[]
 const loader = new GLTFLoader()
-// let m =  new THREE.Mesh
+//let m =  new THREE.Mesh
 
 var buttonTutorail = {
-    StartTutorial: function () {
+    StartTutorial: function tutorialfun() {
         function OpenJson() {
             value++;
             var data = fetch("Tutorials.json")
@@ -84,6 +80,8 @@ var buttonTutorail = {
                     console.log(value)
                     console.log(veri.steps[value].name)
                     jsonAction = veri.steps[value].actions;
+                    // Highlight Structure Element
+
                     var liste = { 'name': new Array, 'materials': new Array };
                     for (let abc of Object.values(pickableObjects)) {
                         liste['name'].push(abc.name)
@@ -104,14 +102,86 @@ var buttonTutorail = {
                                 opacity: 0.7,
                             });
                         }
+
+                        if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
+                            const searchTerm = 'BRep_2008_LOD0';
+
+                            let index = liste['name'].indexOf(searchTerm)
+                            pickableObjects[index].material = new THREE.MeshBasicMaterial({
+                                //wireframe: true,
+                                color: 0xff0000,
+                                transparent: true,
+                                opacity: 0.1,
+                                visible: false,
+                            })
+
+                        }
+                        if (value === 0) {
+                            const searchTerm = 'BRep_2008_LOD0';
+
+                            let index = liste['name'].indexOf(searchTerm)
+                            pickableObjects.forEach((o: THREE.Mesh, i) => {
+                                pickableObjects[index].material = originalMaterials[o.name]
+                            })
+                        }
+
+
+                        if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
+                            const searchTerm2 = 'BRep_1955_LOD0';
+
+                            let index2 = liste['name'].indexOf(searchTerm2)
+                            pickableObjects[index2].material = new THREE.MeshBasicMaterial({
+                                //wireframe: true,
+                                color: 0xff0000,
+                                transparent: true,
+                                opacity: 0.1,
+                                visible: false,
+                            })
+
+                        }
+                        if (value === 0) {
+                            const searchTerm = 'BRep_1955_LOD0';
+
+                            let index2 = liste['name'].indexOf(searchTerm)
+                            pickableObjects.forEach((o: THREE.Mesh, i) => {
+                                pickableObjects[index2].material = originalMaterials[o.name]
+                            })
+                        };
+                        if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
+                            const searchTerm2 = 'BRep_2012_LOD0';
+
+                            let index3 = liste['name'].indexOf(searchTerm2)
+                            pickableObjects[index3].material = new THREE.MeshBasicMaterial({
+                                //wireframe: true,
+                                color: 0xff0000,
+                                transparent: true,
+                                opacity: 0.1,
+                                visible: false,
+                            })
+                        };
+
+
                     }
-                    // Highlight Structure Element
-                    jsonAction.forEach((item) => {
+                    document.getElementById('content')!.style.display = `block`
+                    //Show and Close Popup
+                    function togglePopup() {
+                        document.getElementById("popup-1")?.classList.toggle("active")
+                        var textpopup = document.getElementById("textpop")!.innerHTML = veri.steps[value].name
+                        console.log(textpopup)
 
-                    })
+                    }
+                    togglePopup()
+                    var closeinfo = document.getElementById("close")
+                    if (closeinfo) {
+                        closeinfo.addEventListener('click', function () {
+                            document.getElementById('content')!.style.display = `none`
+                        })
 
+                    }
                     console.log(veri.steps[value].actions)
-                    jsonCameraOfset = veri.steps[value].cameraOffset;
+                    jsonCameraOffset = veri.steps[value].cameraOffset;
+                    jsonCameraRotation = veri.steps[value].cameraRotation;
+                    console.log(jsonCameraOffset)
 
                     //Highlight Structure Element
                     // Add event listener on keypress
@@ -121,13 +191,24 @@ var buttonTutorail = {
                         //})
 
                     }, false);
-
-
-                    var cameraCoordinats = jsonCameraOfset.split(",");
-                    console.log(jsonCameraOfset)
+                    var cameraCoordinats = jsonCameraOffset.split(",");
+                    console.log(jsonCameraOffset)
                     if (cameraCoordinats.length === 3) {
                         camera.position.set(Number(cameraCoordinats[0]), Number(cameraCoordinats[1]), Number(cameraCoordinats[2]))
+                        const p = Number(cameraCoordinats[0])
+                        const p1 = Number(cameraCoordinats[1])
+                        const p2 = Number(cameraCoordinats[2])
                     }
+                    console.log(camera.position)
+                    var camerarotCoordinats = jsonCameraRotation.split(",");
+                    console.log(jsonCameraRotation)
+                    if (camerarotCoordinats.length === 3) {
+                        camera.rotation.set(Number(camerarotCoordinats[0]), Number(camerarotCoordinats[1]), Number(camerarotCoordinats[2]))
+                        const p = Number(camerarotCoordinats[0])
+                        const p1 = Number(camerarotCoordinats[1])
+                        const p2 = Number(camerarotCoordinats[2])
+                    }
+                    console.log(camera.rotation)
                 })
 
             if (value >= 3) {
@@ -137,10 +218,11 @@ var buttonTutorail = {
         OpenJson()
     }
 };
-var tutorialFolder = gui.addFolder("Tutorial")
-tutorialFolder.add(buttonTutorail,"StartTutorial")
-tutorialFolder.open()
 
+
+var tutorialFolder = gui.addFolder("Tutorial")
+tutorialFolder.add(buttonTutorail, "StartTutorial")
+tutorialFolder.open()
 
 loader.load(
     'models/testNew4LOD.glb',
@@ -151,21 +233,16 @@ loader.load(
                 child.receiveShadow = true
                 let m = child as THREE.Mesh
                 m.castShadow = true
-                
+
                 // Secilebilir objeler
                 // console.log(m.material)
-
                 // Pickable Objects
                 pickableObjects.push(m)
-
                 //store reference to original materials for later
                 originalMaterials[m.name] = (m as THREE.Mesh).material
             }
         })
 
-
-
-        //tutorialFolder.add(obj, 'StartTutorial');
         let theResult0 = new THREE.Object3D();
         let theResult1 = new THREE.Object3D();
         let theResult2 = new THREE.Object3D();
@@ -181,9 +258,6 @@ loader.load(
         lod.rotation.set(0, -1.5, 1.555)
         lod.position.set(-7, 0, 0)
         scene.add(lod)
-
-        // console.log(lod)
-
     },
     (xhr) => {
         //console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
@@ -204,15 +278,18 @@ function onDoubleClick(event: MouseEvent) {
 
     if (intersects.length > 0) {
         const p = intersects[0].point
-        controls.target.set(p.x, p.y, p.z)
-        new TWEEN.Tween(controls.target)
+        // camera.lookAt(p.x, p.y, p.z)
+        new TWEEN.Tween(camera.position)
             .to({
-                jsonCameraOfset
-            }, 5000)
-            .delay(90000)
-            .easing(TWEEN.Easing.Bounce.In)
-            // .onUpdate(() => render())
+                x: p.x,
+                y: p.y,
+                z: p.z
+            }, 500)
+            .delay(100)
+            .easing(TWEEN.Easing.Cubic.Out)
+            .onUpdate(() => render())
             .start()
+        console.log(intersects.length)
     }
 }
 
@@ -350,18 +427,16 @@ function animate() {
     render()
     stats.update()
 }
-
-//const trianglesElem = document.querySelector("#Triangles")
-//const LODElem = document.querySelector("#LOD")
+const trianglesElem = document.querySelector("#Triangles")
+const LODElem = document.querySelector("#LOD")
 
 
 function render() {
 
     // console.log( renderer.info.render.triangles );
     renderer.info.autoReset = true;
-   // trianglesElem!.innerHTML = renderer.info.render.triangles.toString()
-  //  LODElem!.innerHTML = lod.getCurrentLevel().toString()
+    trianglesElem!.innerHTML = renderer.info.render.triangles.toString()
+    LODElem!.innerHTML = lod.getCurrentLevel().toString()
     renderer.render(scene, camera)
 }
-
 animate()
