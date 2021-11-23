@@ -69,7 +69,7 @@
                     "state": 0
                 }
             ],
-            "cameraOffset": "-0,15,45",
+            "cameraOffset": "1.49,3.78,32",
             "isPhoto": true,
             "images": [],
             "justCreated": false,
@@ -101,7 +101,7 @@
         },
         {
             "id": 1733,
-            "name": "Do something with Robot arm2",
+            "name": "Do Something Collecter Box",
             "description": "Highlight robot arm",
             "order": 1,
             "tutorialId": 403,
@@ -126,15 +126,46 @@
                 },
                 {
                     "id": 1172,
-                    "structureName": "BRep_2008_LOD0",
+                    "structureName": "BRep_2008_LOD0", 
                     "structureId": 1233,
                     "actionType": "HIDE",
                     "color": "1,0,0,1",
                     "stepId": 1731,
                     "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "BRep_2008_LOD1", 
+                    "structureId": 1233,
+                    "actionType": "HIDE",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                },
+                {
+                    "id": 1172,
+                    "structureName": "BRep_2012_LOD0", 
+                    "structureId": 1233,
+                    "actionType": "HIDE",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                    
+                },
+                {
+                    "id": 1172,
+                    "structureName": "BRep_1955_LOD0", 
+                    "structureId": 1233,
+                    "actionType": "HIDE",
+                    "color": "1,0,0,1",
+                    "stepId": 1731,
+                    "state": 0
+                    
                 }
+                
             ],
-            "cameraOffset": "0,-5,-35",
+            "cameraOffset":"-23.0779552951301596 ,10.1237903455741587 ,-27.377942393404126",
+            "cameraRotation":"-2.6126848073323066 ,10.5683153415786911 ,-2.836833041517519",
             "isPhoto": true,
             "images": [],
             "justCreated": false,
