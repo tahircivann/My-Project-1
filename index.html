@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Three.js TpypeScript Test by Tahir Civan</title>
+</head>
+<script type="module" src="bundle.js"></script>
+<script src="js/tween.umd.js"></script>
+<script src="js/RequestAnimationFrame.js"></script>
+<body>
+  <div class="popup" id="popup-1">
+    <div class="overlay"></div>
+    <div id =content class="content">
+      <div id=close class="close-btn">&times;</div>
+      <h1>Title</h1>
+      <p id=textpop >
+        Something writing here
+      </p>
+    </div>
+  </div>
+  <div id="debug">
+    <div>Triangles:<span id="Triangles"></span></div>
+  </div>
+  <div id="LODdebug">
+    <div>LOD Level:<span id="LOD"></span></div>
+  </div>
+  <div id="ObjectName">
+    <div>ObjectName:<span id="ObjectName"></span></div>
+  </div>
+</body>
+</html>
