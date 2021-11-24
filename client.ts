@@ -69,10 +69,12 @@ const raycaster = new THREE.Raycaster()
 let intersects: THREE.Intersection[]
 const loader = new GLTFLoader()
 //let m =  new THREE.Mesh
+var partnames = new Array
+var searchTerm = new Array
 
 var buttonTutorail = {
     StartTutorial: function tutorialfun() {
-        function OpenJson() {
+        function OpenJson(param: any) {
             value++;
             var data = fetch("Tutorials.json")
                 .then(response => response.json())
@@ -102,65 +104,50 @@ var buttonTutorail = {
                                 opacity: 0.7,
                             });
                         }
+                        //Use Part Names for in Popup for make it invisible or visible
+                        partnames = ['BRep_2012_LOD0', 'BRep_2008_LOD0', 'BRep_1955_LOD0']
 
                         if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
-                            const searchTerm = 'BRep_2008_LOD0';
 
-                            let index = liste['name'].indexOf(searchTerm)
+                            let index = liste['name'].indexOf(partnames[1])
                             pickableObjects[index].material = new THREE.MeshBasicMaterial({
-                                //wireframe: true,
                                 color: 0xff0000,
                                 transparent: true,
                                 opacity: 0.1,
                                 visible: false,
                             })
-
                         }
                         if (value === 0) {
-                            const searchTerm = 'BRep_2008_LOD0';
-
-                            let index = liste['name'].indexOf(searchTerm)
+                            let index = liste['name'].indexOf(partnames[1])
                             pickableObjects.forEach((o: THREE.Mesh, i) => {
                                 pickableObjects[index].material = originalMaterials[o.name]
                             })
                         }
-
-
                         if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
-                            const searchTerm2 = 'BRep_1955_LOD0';
-
-                            let index2 = liste['name'].indexOf(searchTerm2)
+                            let index2 = liste['name'].indexOf(partnames[2])
                             pickableObjects[index2].material = new THREE.MeshBasicMaterial({
-                                //wireframe: true,
                                 color: 0xff0000,
                                 transparent: true,
                                 opacity: 0.1,
                                 visible: false,
                             })
-
                         }
                         if (value === 0) {
-                            const searchTerm = 'BRep_1955_LOD0';
-
-                            let index2 = liste['name'].indexOf(searchTerm)
+                            let index2 = liste['name'].indexOf(partnames[2])
                             pickableObjects.forEach((o: THREE.Mesh, i) => {
                                 pickableObjects[index2].material = originalMaterials[o.name]
                             })
                         };
                         if (liste[`name`].indexOf(jsonAction[i].structureName) && jsonAction[2].structureName) {
-                            const searchTerm2 = 'BRep_2012_LOD0';
-
-                            let index3 = liste['name'].indexOf(searchTerm2)
+                            let index3 = liste['name'].indexOf(partnames[0])
                             pickableObjects[index3].material = new THREE.MeshBasicMaterial({
-                                //wireframe: true,
                                 color: 0xff0000,
                                 transparent: true,
                                 opacity: 0.1,
                                 visible: false,
                             })
+
                         };
-
-
                     }
                     document.getElementById('content')!.style.display = `block`
                     //Show and Close Popup
@@ -183,14 +170,7 @@ var buttonTutorail = {
                     jsonCameraRotation = veri.steps[value].cameraRotation;
                     console.log(jsonCameraOffset)
 
-                    //Highlight Structure Element
-                    // Add event listener on keypress
-                    document.addEventListener('keypress', (event) => {
-                        //pickableObjects.forEach((o: THREE.Mesh, i) => {
-                        //    pickableObjects[i].material = originalMaterials[o.name]
-                        //})
 
-                    }, false);
                     var cameraCoordinats = jsonCameraOffset.split(",");
                     console.log(jsonCameraOffset)
                     if (cameraCoordinats.length === 3) {
@@ -200,23 +180,30 @@ var buttonTutorail = {
                         const p2 = Number(cameraCoordinats[2])
                     }
                     console.log(camera.position)
-                    var camerarotCoordinats = jsonCameraRotation.split(",");
-                    console.log(jsonCameraRotation)
-                    if (camerarotCoordinats.length === 3) {
-                        camera.rotation.set(Number(camerarotCoordinats[0]), Number(camerarotCoordinats[1]), Number(camerarotCoordinats[2]))
-                        const p = Number(camerarotCoordinats[0])
-                        const p1 = Number(camerarotCoordinats[1])
-                        const p2 = Number(camerarotCoordinats[2])
-                    }
                     console.log(camera.rotation)
                 })
 
             if (value >= 3) {
-                value = 0
+
+
+                pickableObjects.forEach((o: THREE.Mesh, i) => {
+                    pickableObjects[i].material = originalMaterials[o.name]
+                })
+                if (!param) {
+                    return
+                }
+                value = -1
+                document.getElementById('content')!.style.display = `none`
+                camera.position.set(-6, 12, 80.99)
+
+
             }
+
         }
-        OpenJson()
+        OpenJson(param)
+
     }
+
 };
 
 
@@ -341,7 +328,6 @@ function onClick(event: MouseEvent) {
                 selectedObjectName = intersectedObjects.name
             }
 
-            //console.log((selectedMesh))
         }
         else {
             intersectedObjects = null
